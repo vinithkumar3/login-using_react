@@ -1,0 +1,1735 @@
+Javascript
+--------------4
+ Run time complier
+chrome  v8 required to run the program
+ ECMA(European Computer Manufacturers Association Script)
+Es6  is standard version
+
+syntax to print
+----------------
+console.log("");
+---------------------------
+inbulit keywords
+------->
+Object
+ Array
+Number 
+Boolean
+String
+JSON
+-----------------------
+
+Data Types : 
+
+
+
+
+
+
+
+String. - "" 
+
+
+Number. - 123434 
+Boolean. - true / false
+
+Undefined. - 
+Null.
+
+Object.{} is a data type
+---------
+JSON is a object format
+
+const person = {
+ 
+ name: "John",
+ 
+ age: 30,
+ 
+ city: "New York"
+};
+   |      |
+  key   value
+
+---------------------
+
+Variables : 
+
+var
+let
+ 
+const------ value cannot be changed
+
+
+---------------------
+
+
+function
+
+Note : Scope = {}
+
+1. Scope
+
+   {
+     let a = "Ram"
+     
+   }
+
+
+2. Outer scope value can be get in inner scope.
+
+
+
+Code Snippet :
+
+
+Code 1 :
+
+function getStudentName(){
+    
+    return {
+        name : "RAm",
+        age : 23
+    };
+    
+    
+};
+
+
+const studentName = getStudentName();
+
+console.log(studentName)
+ 
+
+Code 2 : 
+
+
+
+
+
+COde 3 ;
+
+var a = {
+    name : "Ram",
+    age : 25 ,
+    student : {
+        course : "B-tech",
+        test : {
+            grade : "A"
+        }
+    }
+}
+
+
+console.log(a.student.test.grade)
+
+
+
+---------------------------------------
+
+
+Function Parameters :
+
+
+Code Snippet 1 :
+
+function printStudentName(name,age){
+    
+  console.log(name,age)
+ 
+};
+
+printStudentName("Sathish",24);
+printStudentName("Ram",26);
+
+
+Code Snippet 2 :
+
+function getStudentName(name,age){
+    
+   return {
+       name : name,
+       age : age
+   }
+   
+   console.log("After return")
+ 
+};
+
+
+const student = getStudentName("Sathish",24);
+
+console.log(student)
+
+
+.....................................
+ARRAY
+---------->
+
+Array must be declare using square [  ]
+splice()
+--------
+const fruit=["banana ","apple","orange","Blueberry"];
+
+fruit.splice(2,   1);
+
+             |    |
+          index- no of element
+console.log(fruit)========output----->[ 'banana ', 'apple', 'Blueberry' ]
+
+const fruit=["banana ","apple","orange","Blueberry"];
+
+fruit.splice(2,1,"grapes", "melon");
+
+console.log(fruit);========output----->[ 'banana ', 'apple', 'grapes', 'melon', 'Blueberry' ]
+console.log(fruit.splice(2,1));========output----->[ 'grapes' ]
+
+Slice()
+--------
+slice(  x,    y)
+        |     |
+      index  index
+
+
+const fruits=["banana ","apple","orange","Blueberry"];
+ 
+const  citrus=fruits.slice(1,3);
+
+console.log(citrus);========output----->[ 'apple', 'orange' ]
+console.log(fruits);========output----->
+[ 'banana ', 'apple', 'orange', 'Blueberry' ]
+
+console.log(fruits.indexOf("apple"))========output----->1   \\(show the index value)
+
+
+ .................................................................... 
+Array In JS Part Two :
+
+
+
+
+filter
+
+map
+
+forEach
+
+some 
+
+every
+
+ sort
+
+
+Code
+
+Reverse
+-------------
+const student=["Ram","Sathish" , null , 35];
+
+console.log(student.reverse());========output----->[ 35, null, 'Sathish', 'Ram' ]
+
+ snippet 1 :
+
+
+
+
+const student = ["Ram","Sathish" , null , 35];
+
+
+function filterStudents(value , index)
+{
+    
+console.log(value ,index)
+    
+return value == "Ram";
+
+}
+
+
+const nonNullStudents = student.filter(filterStudents)
+
+
+console.log(nonNullStudents)
+
+
+
+ output----------->
+Ram 0
+Sathish 1
+null 2
+35 3
+[ 'Ram' ]
+
+
+
+Code Snippet 2 :
+map
+----
+const data = [3,7,2,9,0];
+
+
+ 
+
+
+const newData = data.map(function(value)
+{
+return 
+{no:value}
+})
+
+console.log(newData);
+======output------>
+
+[ { no: 3 }, { no: 7 }, { no: 2 }, { no: 9 }, { no: 0 } ]
+-------------
+const data = [3,7,2,9,0];
+
+
+ 
+
+
+const newData = data.map(function(value)
+{
+return 
+{no:value+5}
+})
+
+console.log(newData);
+======output------>
+
+
+[ { no: 8 }, { no: 12 }, { no: 7 }, { no: 14 }, { no: 5 } ]
+
+
+
+
+Code 3 : 
+
+
+ const numbers = [3,7,2,9,0]
+
+
+ const sortedNumbers = numbers.sort();
+
+
+
+ console.log(sortedNumbers)======output----------->  [ 0, 2, 3, 7, 9 ]   
+
+......................................................
+Code 4 :
+
+  
+const isHavingNull = student.some(function(value,index)
+{
+    
+    return value != null;
+    
+
+  })
+
+
+
+console.log(isHavingNull)
+
+
+...........................
+
+
+
+Code 5 :
+
+
+every(true/false)
+if our given value is found it shows true otherwise false
+example for true
+
+---------
+const student = [
+  {
+     
+ name : "Ram",
+      pass : true,
+  } ,
+   
+ {
+      name : "Sathish",
+      pass : true,
+  },
+  
+
+   {
+      name : "Vinitth",
+      pass : true,
+  }
+];
+
+
+
+
+const allStudentPass = student.every(function(value,index)
+{
+    
+   
+ return value.pass == true;
+    
+})
+
+
+console.log(allStudentPass)
+======output------>
+
+
+true
+
+-----------
+example for flase
+---------
+const student = [
+  {
+     
+        name : "Ram",
+      pass : true,
+  } ,
+   
+ {
+      name : "Sathish",
+      pass : false,
+  },
+  
+
+ {
+      name : "Vinitth",
+      pass : true,
+  }
+];
+
+
+
+
+const allStudentPass = student.every(function(value,index)
+{
+    
+   
+ return value.pass == true;
+    
+})
+
+
+console.log(allStudentPass)
+======output------>
+
+
+false
+............................
+
+String Method
+-----------------
+length
+---------
+ const name="john walker"
+console.log(name.length); 11
+
+slice
+---------
+ const name="john walker"
+console.log(name,slice(5));walker
+
+ const name="john walker"
+console.log(name,slice(5,10)); output ==== walke
+
+substring
+-----------
+ const name="john walker"
+console.log(name,substring(5,11)); output ==== walker
+
+const name="john walker"
+console.log(name,substr(5,2)); output ==== wa
+                       (index,number of elemrnt)
+
+
+
+
+replace
+------------
+ const name="john walker"
+console.log(name.replace("john","arya"); output ==== arya walker
+
+
+
+Uppercase
+-------------
+
+const name="john walker"
+console.log(name.toUppercase()); output ==== JOHN WALKER
+
+Lowercase
+---------
+const name="john walker"
+console.log(name.toLowercase()); output ==== john walker
+
+
+concat
+--------
+const name="john walker"
+console.log(name.concat("arya")); output ==== john walkerarya
+
+Trim
+-------------
+const name="      john walker  "
+console.log("data",name); output ==== Data     john walker
+console.log("data",name.trim()); output ==== Data john walker
+
+console.log("data",name.trimStart()); output ==== Data john walker
+console.log("data",name.trimEnd()); output ==== Data         john walker
+
+
+
+charAt
+-----------
+const name="john walker"
+console.log(name.charAt(0)); output ==== j
+  
+
+console.log(name[5])output==w
+
+
+
+
+---------------
+Split
+---------- convert  string into array
+const name="john walker"
+console.log(name.split(""));   output= 'j''o''h''n' 'w''a''l''k''e''r'
+
+
+const name="john walker, ram ,vinith"
+const stringArray=name.split(",");
+console.log(stringArray); output===== 'john walker' ,'ram' 'vinith'
+ 
+const name="john walker$ram $vinith"
+const stringArray=name.split("$");
+console.log(stringArray); output===== 'john walker' ,'ram' 'vinith'
+
+
+
+
+----------------------------------------------------
+Objects properties
+------------------------
+const person = {
+ 
+ name: "John",
+ 
+ age: 30,
+ 
+ city: "New York"
+};
+
+console.log(Object.values(person))=== output----[ 'John', 30, 'New York' ]
+
+
+
+
+const person = {
+ 
+ name: "John",
+ 
+ age: 30,
+ 
+ city: "New York"
+};
+
+console.log(Object.keys(person))=== output----[ 'name', 'age', 'city' ]
+
+stringify-------to change objecct into string 
+const person = {
+ 
+ name: "John",
+ 
+ age: 30,
+ 
+ city: "New York"
+};
+console.log(JSON.stringify(person))=== output----{"name":"John","age":30,"city":"New York"}
+
+parse------ to covert  string( which covenvert by json ) into object  
+const person = {
+ 
+ name: "John",
+ 
+ age: 30,
+ 
+ city: "New York"
+};
+const personString=JSON.stringify(person)
+
+
+console.log(personString)=== output----{"name":"John","age":30,"city":"New York"}
+console.log(JSON.parse(personString))=== output----
+{ name: 'John', age: 30, city: 'New York' }
+
+
+
+-------------------------------------------------------
+Object core 
+--------
+ ways of creating object
+---------------------------
+
+type --1
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+console.log(person)====output-----{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }
+
+
+
+type-2
+This example creates an empty JavaScript object, and then adds 4 properties:
+
+const person = {};
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue"; 
+
+
+console.log(person)====output-----{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }
+
+
+type---3
+const person= new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue"; 
+console.log(person)====output-----{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }
+ 
+
+
+const person= new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue"; 
+console.log(person["age"])====output----- 50 
+
+
+Delete Method
+------------------
+const person= new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue"; 
+console.log(person) ====output----->   { firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }
+delete person.lastName
+console.log(person) ====output----->  { firstName: 'John', age: 50, eyeColor: 'blue' }
+
+
+............................................................
+ this keyword
+
+
+
+const person={
+ 
+   name :"sathish",
+   
+ age:35,
+    
+getNameAndAge :function()
+{
+        console.log("Data");
+   
+ }
+}
+
+person.getNameAndAge();====output----->Data
+
+
+const person={
+  
+  name :"sathish",
+   
+ age:35,
+  
+  getNameAndAge :function()
+{
+        console.log(this);
+   
+ }
+}
+
+person.getNameAndAge();====output----->{ name: 'sathish', age: 35, getNameAndAge: [Function: getNameAndAge] }
+
+
+.......................................
+if ...elseif.....
+-----------------
+const isRamPresent=false
+
+if(isRamPresent==true)
+{
+    
+console.log("is true")
+
+    
+
+}
+
+else if(isRamPresent==undefined)
+{
+
+console.log("is undefined ")
+
+}
+else
+{
+    console.log("false")
+
+}                                    
+====output----->flase
+--------------------------------------
+
+operator -->
+------------
+&&,
+ ||,
+ !==,
+ ==, 
+===
+.............................
+&& and operator
+-----
+const RamPresent = true;
+
+const RamPassed =true;
+
+const rameligible =  RamPresent == true &&  RamPassed == true;
+
+console.log(rameligible)====output----->rameligible
+
+const RamPresent = true;
+
+const RamPassed =false;
+
+const rameligible =  RamPresent == true &&  RamPassed == true;
+
+console.log(rameligible)====output----->false
+
+....................
+|| or operator
+--------------
+const RamPresent = true;
+
+const RamPassed = false;
+
+const rameligible =  RamPresent == true ||  RamPassed == true;
+
+console.log(rameligible)====output----->true
+
+
+
+ ........
+condition  
+-----------
+
+if 
+if...else
+if ...elseif.....
+-----------------
+const isRamPresent=false
+
+if(isRamPresent==true)
+{
+    
+console.log("is true")
+
+    
+
+}
+
+else if(isRamPresent==undefined)
+{
+
+console.log("is undefined ")
+
+}
+else
+{
+    console.log("false")
+
+}                                    
+====output----->flase
+
+...........................................
+switch
+-----------------
+const  mark =70;
+
+switch(mark)
+{
+    case 70:
+{
+        console.log("passed");
+  
+      break;
+    }
+    
+case 35:{
+      
+  console.log("failed");
+     
+   break;
+    }
+====output----->passed
+
+const  mark =54;
+
+switch(mark)
+{
+    case 70:
+{
+        console.log("passed");
+  
+      break;
+    }
+    
+case 35:{
+      
+  console.log("failed");
+     
+   break;
+    }
+====output----->passed
+
+  default:{
+    
+console.log( "not found")
+
+}====output----->not found
+-------------
+for
+----
+for(i=0;i<10;i++)
+
+{
+    console.log(i)
+
+}
+====output----->
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+....................
+while
+-------
+let i = 0;
+
+while (i < 10)
+ {
+  console.log("Value is ",i)
+
+  i++;
+  
+}
+====output----->
+ Value is  0
+Value is  1
+Value is  2
+Value is  3
+Value is  4
+Value is  5
+Value is  6
+Value is  7
+Value is  8
+Value is  9
+
+.....................
+do...while()
+--------------
+let i = 10;
+
+do 
+{
+  console.log("Data",i)
+  i++;
+}
+
+while (i < 5);
+ =============output----------> Data 10
+......................
+try
+--------
+try{
+const data={
+name:"ram"
+}
+console.log(data.name.age.student)
+
+}
+catch(error){
+console.log("error")
+}    ====output-----> error
+.................................
+
+finaly
+---------
+try{
+const data={
+name:"ram"
+}
+console.log(data.name.age.student)
+
+}
+catch(error){
+console.log("error")
+}   
+finally
+{
+    console.log("finally")
+}
+====output----->error
+                finally
+
+................................
+.................................
+23-02-2023
+
+----------------------------
+
+
+
+
+Methods to get Element :
+----------------------------
+
+
+
+document.getElementById()	Returns the element that has the ID attribute with the specified value
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="basicjs.js"> </script>
+</head>
+
+<body>
+<button onclick="printStudent()">Submit</button>
+
+<input id="inputField" onchange="valueChanged()" value="Dada"></input>
+ 
+</body>
+</html>
+--------------
+function printStudent(){
+    document.getElementById("inputField").value = "Updated"
+} 
+
+function valueChanged(){
+    console.log("Value Printed")
+}
+
+.................................................
+document.getElementsByClassName()	Returns an HTMLCollection containing all elements with the specified class name
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="basicjs.js"> </script>
+</head>
+
+<body>
+<button onclick="printStudent()">Submit</button>
+
+<input class="inputField" onchange="valueChanged()" value="Dada"></input>
+<input class="inputField" onchange="valueChanged()" value="neww\"></input>
+</body>
+</html>
+
+---------
+function printStudent(){
+    document.getElementsByClassName("inputField")[0].value = "Updated"
+    document.getElementsByClassName("inputField")[1].value = "Updated"
+} 
+
+function valueChanged(){
+    console.log("Value Printed")
+}
+-----------------------
+document.getElementsByName()	Returns an live NodeList containing all elements with the specified name
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="basicjs.js"> </script>
+</head>
+
+<body>
+<button onclick="printStudent()">Submit</button>
+
+<input class="inputField" onchange="valueChanged()" value="Dada"></input>
+<input class="inputField" onchange="valueChanged()" value="neww\"></input>
+<input name="input" onchange="valueChanged()" value="hello"></input>
+
+</body>
+</html>
+-----------------------------
+function printStudent(){
+    
+   const   arrayelement =document.getElementsByName("input")[0].value = "Updated"
+   arrayelement[0].value = "Updated"
+} 
+
+function valueChanged(){
+    console.log("Value Printed")
+}
+................................
+
+
+document.getElementsByTagName()	Returns an HTMLCollection containing all elements with the specified tag name
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="basicjs.js"> </script>
+</head>
+
+<body>
+<button onclick="printStudent()">Submit</button>
+
+<input class="inputField" onchange="valueChanged()" value="Dada"></input>
+<input class="inputField" onchange="valueChanged()" value="neww\"></input>
+<input name="inputs" onchange="valueChanged()" value="hello"></input>
+
+  </body>
+</html>
+---------------------------
+function printStudent(){
+const   arrayelement =document.getElementsByTagName("input")
+   arrayelement[2].value = "Updated"
+}
+ 
+function valueChanged(){
+    console.log("Value Printed")
+}
+.................................................................
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<body>
+<button id="submitbutton">Submit</button>
+
+<input class="inputField" onchange="valueChanged()" value="Dada"></input>
+<input class="inputField" onchange="valueChanged()" value="neww\"></input>
+<input name="inputs" onchange="valueChanged()" value="hello"></input>
+<script src="basicjs.js"> </script>
+</body>
+</html>
+-----
+Event listener
+---------------
+document.getElementById("submitbutton").addEventListener("click",function (){
+    console.log("Submitted")
+})
+function printStudent(){
+   // document.getElementsByClassName("inputField")[0].value = "Updated"
+   // document.getElementsByClassName("inputField")[1].value = "Updated"
+   // const   arrayelement =document.getElementsByName("input")[0].value = "Updated"
+
+   // arrayelement[0].value = "Updated"
+   const   arrayelement =document.getElementsByTagName("input")
+   arrayelement[2].value = "Updated"
+   document.getElementById("printStudent") 
+
+} 
+
+function valueChanged(){
+    console.log("Value Printed")
+}
+
+...........................................................
+28-02-2023
+WINDOW OBJECT
+------------------
+ local storage -value will there even after closing the tab 
+---------------
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<body>
+<button onclick="setValue()"> set value</button>
+<button onclick="getValue()"> Get value</button>
+<button onclick="clearValue()"> Clear value</button>                      
+
+
+
+</body>
+<script src="basicjs.js"> </script>
+</html>
+------------------------
+function setValue(){
+    localStorage.setItem("nameStudent","Ram")
+}
+function getValue(){
+   console.log("value local",localStorage.getItem("nameStudent","Ram"))
+}
+function clearValue(){
+    localStorage.clear()
+}
+
+...................................
+
+Session storage--- value will not be there after closing the tab.
+--------------
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<body>
+<button onclick="setValue()"> set value</button>
+<button onclick="getValue()"> Get value</button>
+<button onclick="clearValue()"> Clear value</button>
+
+</body>
+<script src="basicjs.js"> </script>
+</html>
+--------------
+function setValue(){
+    sessionStorage.setItem("nameStudent","Ram")
+}
+function getValue(){
+   console.log("value local",sessionStorage.getItem("nameStudent","Ram"))
+}
+function clearValue(){
+    sessionStorage.clear()
+}
+
+.........................
+ALERT
+---------------
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title> 
+</head>
+
+<body>
+
+<button onclick="showAlert()"> Alert</button>
+
+</body>
+<script src="basicjs.js"> </script>
+</html>
+------------------------------
+function showAlert(){
+    alert("Alert messaage")
+}
+...................................................
+REDIRECT -TO LINK ( window.location.href="      ") 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<body>
+
+
+<button onclick=" redirectToNewPage()"> Redirect </button>
+
+
+</body>
+<script src="basicjs.js"> </script>
+</html>
+-------------
+function redirectToNewPage(){
+    window.location.href="https://www.w3schools.com/"
+
+}
+.............................................
+set timer---- 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<body>
+<button onclick="timerCheck()"> timerCheck </button>
+</body>
+<script src="basicjs.js"> </script>
+
+</html>
+
+-------------------
+function timerCheck(){
+    setTimeout(function() {
+        console.log("print after 5 sec")
+    },5000)
+        |
+     duration must be in mili second
+}
+.......................
+SET INETERVAL-- repeatly print the value after the given time duration.
+------ 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<button onclick="timerCheck()"> timerCheck </button>
+</body>
+<script src="basicjs.js"> </script>
+</html>
+
+
+
+------------------------------
+function timerCheck(){
+
+    setInterval(function() {
+        console.log("print after 5 sec")
+    },3000)
+}
+..................................
+01-03-23
+----------
+normal way of declaring function 
+function get student(){
+
+}
+ex=
+student.map function((value,index)=>{
+})
+
+..............
+Arrow function-- lastest way of decalring function
+---------------- 
+const getStudent=()=>{
+
+
+
+}
+ex= 
+student.map((value,index)=>{
+})
+
+
+..............
+Destructuring
+--------------
+const student ={
+ name :"satish",
+age:30
+}
+// normal way
+//const name =student.name;
+//const age =student.age;
+
+//Destructuring
+const {name,age}=student;
+console.log(name,age)
+--------------------------------------
+destructuring in array
+--------------
+Const student=["ram",sathish"];
+// normal way
+//const student1=student[0];
+//const student2=student[1];
+
+//destructuring in array
+const [student1,student2]= student;
+console.log(student1,student2)
+
+..............
+string literlas--- `${} ${}`
+--------------
+const string1="ram"
+
+const string2="kumar"
+
+
+//normal way
+//const wholestring = string1+string2
+
+const wholestring =` ${string1}  ${string2}`
+
+console.log(wholestring)
+ 
+Ex-
+const string1="ram"
+
+const string2="kumar"
+
+//const wholestring = string1+string2
+const wholestring =` ${string1} and ${string2} both are friends`
+
+console.log(wholestring)
+.............................
+02-03-2023
+spread operator --- (... x)
+-----------------------
+
+
+
+const a={
+name:"ram"
+}
+const b={
+age:45
+}
+const c={
+  ...a,
+   ...b,
+grade:"a"
+}
+ 
+
+
+console.log(c)
+output=======>{ name: 'ram', age: 45 }
+.........................................
+ CLASS
+----------
+class Student {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+
+const Ram=new Student("Ram",25);
+
+console.log(Ram)
+
+----------------
+class Student {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+getStudentname(){
+console.log(this.name)
+}
+getStudentage(){
+console.log(this.age)
+}
+}
+
+
+
+
+
+const Ram=new Student("Ram",25);
+
+Ram.getStudentname()
+Ram.getStudentage()
+
+
+const Sathish=new Student("sathish",85);
+
+Sathish.getStudentname()
+Sathish.getStudentage()
+output==>
+Ram
+25
+sathish
+85
+............................
+Classes in Javascript
+
+CHANGE
+
+class Student {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  getStudentName(){
+      console.log(this.name)
+  }
+  getStudentAge(){
+      console.log(this.age)
+  }
+  changeName(newName){
+      this.name = newName;
+  }
+}
+
+const Ram = new Student("Ram", 25);
+
+Ram.getStudentName()
+Ram.getStudentAge()
+
+const Sathish = new Student("Sathish", 45);
+
+Sathish.getStudentName()
+Sathish.changeName("Subash")
+Sathish.getStudentName()
+............................................
+INHERTANCE
+--------------
+
+class Car {
+    "Ford"
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+     console.log(this.carname);
+  }
+}
+
+class Model extends Car {
+   
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+   console.log(this.carname)
+   console.log(this.model)
+  }
+}
+
+const FordMustang = new Model("Ford","Mustang");
+FordMustang.show()
+-----------------------------
+03-03-23
+
+
+API-> Application program integration.
+
+
+GET
+POST
+PUT 
+
+Api Call :
+
+https://dummyjson.com/docs/auth
+
+
+
+<!DOCTYPE html>
+
+<head>
+
+<title>Page Title</title>
+
+<script src="page.js"> </script> 
+
+</head>
+
+<body>
+   
+ <input id="username" placeholder="Username"/>
+   
+ <input id="password" placeholder="Password"/>
+    
+<button onclick="onSignIn()">Submit</button>
+
+</body>
+
+
+</html>
+.................
+
+
+Page.js
+
+
+function onSignIn()
+{
+
+    
+const username = document.getElementById("username").value;
+ 
+   const password = document.getElementById("password").value;
+ 
+ 
+    const apiCall = {
+  
+      username : username,
+       
+ password : password
+    
+}
+
+
+
+   
+ fetch("https://dummyjson.com/auth/login",{
+     
+   method : "POST",
+     
+   headers: { 'Content-Type': 'application/json' },
+   
+     body : JSON.stringify(apiCall)
+    })
+.then(res => res.json())
+   
+ .then((response)=>{
+ 
+       console.log("Response Data",response)
+  
+  })
+
+
+
+  }
+
+
+
+
+------------------------------------
+
+
+Callback
+
+
+                    
+ 
+const getStudent = (callBack) => {
+    
+  
+  setTimeout(()=>{
+     
+   callBack()
+    },5000)
+   
+ 
+}
+
+
+
+
+getStudent(()=>{
+
+   console.log("Called")
+  
+})
+
+
+................................
+06-03-23
+Promise()
+...
+const getStudent=new  Promise((resolve,reject)=>{
+
+    
+  resolve("Data")  
+
+})
+ 
+getStudent.then((response)=>{
+
+console.log(" success", response)})
+
+.catch((error)=>{
+
+  console.log("inside failed",error) 
+ 
+})
+
+output=========
+success Data
+.....................
+const getStudent=new  Promise((resolve,reject)=>{
+
+    
+  reject("failed")  
+
+})
+ 
+getStudent.then((response)=>{
+
+console.log(" success", response)})
+
+.catch((error)=>{
+
+  console.log("inside failed",error) 
+ 
+})
+
+output=========
+inside failed failed
+
+
+......................................
+Java script run the program non sequence order it will run all code in parllely 
+so all other value printed before the   set timeout 
+--------------
+const getstudent = new Promise((resolve,reject)=>{
+  
+ 
+ setTimeout(()=>{
+  
+   resolve("data")   
+  },5000)
+ 
+ 
+})
+
+console.log("step.1")
+
+getstudent.then((response)=>{
+  
+  console.log("step.2",response)
+
+    // console.log("inside success",response)
+})
+.catch((error)=>{
+
+    console.log("outside success",error)
+})
+
+console.log("step.3")
+
+-----------------output=========>
+step.1
+step.3
+step.2 data
+.................................
+..........................
+
+const getstudent = new Promise((resolve,reject)=>{
+  
+
+  setTimeout(()=>{
+     
+resolve("data")   
+  },5000)
+ 
+ 
+})
+
+let studentname;
+
+getstudent.then((response)=>{
+ 
+   studentname=response;
+})-------// Due to settime out fuction studentname assignation take place after 5 sec but the compiler complie all other function parllel so it print before assign 
+.catch((error)=>{
+   
+ console.log("inside failure",error)
+})
+
+console.log("studentname",studentname)
+
+-----------------output=========>
+studentname undefined
+
+
+...............................................
+async()
+
+---------------------
+const getstudent = new Promise((resolve,reject)=>{
+
+  console.log("step.1")
+ 
+ setTimeout(()=>{
+   
+   console.log("step.2")
+   
+  resolve("data")   
+  },5000)
+  
+})
+
+
+const printstudentname=async()=>{
+
+let studentname;
+
+console.log("step.3")
+
+
+
+
+
+studentname=await getstudent
+
+
+
+
+console.log("studentname",studentname)
+}
+............................
+
+
+07/03/2023
+
+
+call bind apply
+
+
+
+
+function getStudent(name){
+  
+  console.log(this,name)
+
+}
+
+
+getStudent.call({
+ 
+   age : 5
+
+},"Ram")
+
+
+getStudent.apply({
+   
+ age : 5
+
+},["Ram", "A"])
+
+
+
+const newGetStudent = getStudent.bind({ age : 10 });
+
+ 
+newGetStudent("Ram")
+
+
+
+..........................
+
+
+
+
+
+
+
+
